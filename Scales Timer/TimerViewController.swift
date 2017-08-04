@@ -23,7 +23,16 @@ class TimerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func startButton(_ sender: Any) {
+        
+    }
 
+    @IBAction func pauseButton(_ sender: Any) {
+        
+    }
 
+    @IBAction func resetButton(_ sender: Any) {
+        
+    }
 }
 
