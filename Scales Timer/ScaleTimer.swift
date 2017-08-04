@@ -11,7 +11,7 @@ import Foundation
 class ScaleTimer {
     var currentSecond : Int = 0
     var currentMinute : Int = 0
-    var breakEarned : Int = 1
+    var breakEarned : Int = 0
     
     func incrementSeconds() {
         currentSecond += 1

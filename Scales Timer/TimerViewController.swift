@@ -11,9 +11,9 @@ import UIKit
 class TimerViewController: UIViewController {
     
     //MARK: IBOutlet declarations.
-    @IBOutlet weak var minutesLabel: UILabel!
-    @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var pauseResumeButton: UIButton!
+    @IBOutlet weak var workTimeLabel: UILabel!
+    @IBOutlet weak var breakTimeLabel: UILabel!
     
     //MARK: local variable declaration, and definitions
     var timer = Timer()
