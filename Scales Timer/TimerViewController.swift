@@ -14,6 +14,8 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var pauseResumeButton: UIButton!
     @IBOutlet weak var workTimeLabel: UILabel!
     @IBOutlet weak var breakTimeLabel: UILabel!
+    @IBOutlet weak var workButtonBackground: UIButton!
+    @IBOutlet weak var breakButtonBackground: UIButton!
     
     //MARK: local variable declaration, and definitions
     var timer = Timer()
@@ -49,6 +51,7 @@ class TimerViewController: UIViewController {
             pauseResumeButton.setTitle("Pause", for: .normal)
         }
     }
+    
     @IBAction func resetButtonPressed(_ sender: Any) {
         timer.invalidate()
         scale.resetMinutes()
@@ -58,26 +61,23 @@ class TimerViewController: UIViewController {
         
     }
     
+    @IBAction func triggerWorkButtonPressed(_ sender: Any) {
+        print("Switched to Work Mode")
+        // Enable the work timer, disable the break timer
+        workButtonBackground.backgroundColor = UIColor(red:0.20, green:0.60, blue:1.00, alpha:1.0)
+        breakButtonBackground.backgroundColor = UIColor(red:0.70, green:0.24, blue:0.25, alpha:1.0)
+    }
     
-    @IBAction func breakButtonPressed(_ sender: Any) {
-        
+    @IBAction func triggerBreakButtonPressed(_ sender: Any) {
+        print("Switched to Break Mode")
+        // Enable to break timer, disable the work timer
+        breakButtonBackground.backgroundColor = UIColor(red:1.00, green:0.24, blue:0.27, alpha:1.0)
+        workButtonBackground.backgroundColor = UIColor(red:0.14, green:0.42, blue:0.69, alpha:1.0)
     }
     
     //MARK: Update UI Methods
     func updateUI() {
-        if scale.currentMinute < 10 {
-            minutesLabel.text = "0\(scale.currentMinute)"
-        } else {
-            minutesLabel.text = "\(scale.currentMinute)"
-        }
-        
-        if scale.currentSecond < 10 {
-            secondsLabel.text = "0\(scale.currentSecond)"
-        } else {
-            secondsLabel.text = "\(scale.currentSecond)"
-        }
-        
-        
+        workTimeLabel.text = String(format:"%2d:%02d", scale.currentMinute, scale.currentSecond)
     }
     
     
