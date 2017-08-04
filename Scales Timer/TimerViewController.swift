@@ -9,14 +9,18 @@
 import UIKit
 
 class TimerViewController: UIViewController {
+    
+    //MARK: IBOutlet declarations.
     @IBOutlet weak var minutesLabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var pauseResumeButton: UIButton!
     
+    //MARK: local variable declaration, and definitions
     var timer = Timer()
-    var stopWatch = Stopwatch()
+    var scale = ScaleTimer()
     var isTimerRunning = false
     var resumeTapped = false
+    var onBreak = false
 
 
     override func viewDidLoad() {
@@ -47,41 +51,65 @@ class TimerViewController: UIViewController {
     }
     @IBAction func resetButtonPressed(_ sender: Any) {
         timer.invalidate()
-        stopWatch.resetMinutes()
-        stopWatch.resetSeconds()
-        updateMinutesAndSeconds()
+        scale.resetMinutes()
+        scale.resetSeconds()
+        updateUI()
         isTimerRunning = false
+        
+    }
+    
+    
+    @IBAction func breakButtonPressed(_ sender: Any) {
+        
     }
     
     //MARK: Update UI Methods
-    func updateMinutesAndSeconds() {
-        if stopWatch.currentMinute < 10 {
-            minutesLabel.text = "0\(stopWatch.currentMinute)"
+    func updateUI() {
+        if scale.currentMinute < 10 {
+            minutesLabel.text = "0\(scale.currentMinute)"
         } else {
-            minutesLabel.text = "\(stopWatch.currentMinute)"
+            minutesLabel.text = "\(scale.currentMinute)"
         }
         
-        if stopWatch.currentSecond < 10 {
-            secondsLabel.text = "0\(stopWatch.currentSecond)"
+        if scale.currentSecond < 10 {
+            secondsLabel.text = "0\(scale.currentSecond)"
         } else {
-            secondsLabel.text = "\(stopWatch.currentSecond)"
+            secondsLabel.text = "\(scale.currentSecond)"
         }
+        
+        
     }
     
     
     //MARK: Helper Methods
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(TimerViewController.updateStopWatch)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(TimerViewController.updateScale)), userInfo: nil, repeats: true)
         isTimerRunning = true
     }
     
-    func updateStopWatch() {
-        stopWatch.incrementSeconds()
-        if stopWatch.currentSecond == 60 {
-            stopWatch.incrementMinutes()
+    func updateScale() {
+        if onBreak == false {
+            scale.incrementSeconds()
+            if scale.currentSecond == 60 {
+                scale.incrementMinutes()
+            }
         }
         
-        updateMinutesAndSeconds()
+        else {
+            scale.decrementSeconds()
+            if scale.currentSecond == -1 {
+                scale.decrementMinutes()
+                scale.currentSecond = 59
+            }
+        }
+        updateUI()
+    }
+    
+    func startBreak() {
+        onBreak = true
+        scale.resetSeconds()
+        scale.currentMinute = scale.breakEarned
+        runTimer()
     }
     
     

@@ -44,17 +44,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnt-ey-7sM" userLabel="Bottom Container">
                                 <rect key="frame" x="0.0" y="430.00000000000006" width="414" height="256.33333333333343"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3K-2K-9dS">
-                                        <rect key="frame" x="268.66666666666669" y="103.33333333333337" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="RPQ-o7-Dw4"/>
-                                            <constraint firstAttribute="width" constant="50" id="mNU-2F-7A3"/>
-                                        </constraints>
-                                        <state key="normal" title="Reset"/>
-                                        <connections>
-                                            <action selector="resetButtonPressed:" destination="9o0-jA-z4L" eventType="touchUpInside" id="LSe-ti-cnr"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMX-ph-M3y">
                                         <rect key="frame" x="169.66666666666666" y="103.33333333333337" width="75" height="50"/>
                                         <constraints>
@@ -76,6 +65,17 @@
                                         <state key="normal" title="Start"/>
                                         <connections>
                                             <action selector="startButtonPressed:" destination="9o0-jA-z4L" eventType="touchUpInside" id="Zbt-2f-91v"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3K-2K-9dS">
+                                        <rect key="frame" x="268" y="102" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RPQ-o7-Dw4"/>
+                                            <constraint firstAttribute="width" constant="50" id="mNU-2F-7A3"/>
+                                        </constraints>
+                                        <state key="normal" title="Reset"/>
+                                        <connections>
+                                            <action selector="resetButtonPressed:" destination="9o0-jA-z4L" eventType="touchUpInside" id="LSe-ti-cnr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -100,11 +100,27 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEj-U6-VrB">
+                                        <rect key="frame" x="8" y="8" width="64" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="9Lq-ha-zyv"/>
+                                            <constraint firstAttribute="height" constant="30" id="cBw-fE-f71"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <state key="normal" title="0">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="breakButtonPressed:" destination="9o0-jA-z4L" eventType="touchUpInside" id="mdy-oL-Zjr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="sEj-U6-VrB" firstAttribute="leading" secondItem="Pdn-Ek-az0" secondAttribute="leadingMargin" id="4Wo-Da-5UX"/>
                                     <constraint firstItem="mOQ-0r-h6B" firstAttribute="centerY" secondItem="Pdn-Ek-az0" secondAttribute="centerY" id="Uvu-F7-8xG"/>
                                     <constraint firstItem="mOQ-0r-h6B" firstAttribute="centerX" secondItem="Pdn-Ek-az0" secondAttribute="centerX" id="YMV-Sg-zuN"/>
+                                    <constraint firstItem="sEj-U6-VrB" firstAttribute="top" secondItem="Pdn-Ek-az0" secondAttribute="topMargin" id="vg8-LN-atY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJs-re-LlG" userLabel="Middle Container">
@@ -175,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KR8-qv-Mqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2274.4000000000001" y="-251.42428785607197"/>
+            <point key="canvasLocation" x="2273.913043478261" y="-251.9021739130435"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qXm-bI-X54">
