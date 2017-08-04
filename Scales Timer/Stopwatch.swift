@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Timer {
+class Stopwatch {
     var currentSecond : Int = 0
     var currentMinute : Int = 0
     
