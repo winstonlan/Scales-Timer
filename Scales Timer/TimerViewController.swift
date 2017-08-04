@@ -11,28 +11,54 @@ import UIKit
 class TimerViewController: UIViewController {
     @IBOutlet weak var minutesLabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
+    
+    var timer = Timer()
+    var stopWatch = Stopwatch()
+    var isTimerRunning = false
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
-    @IBAction func startButton(_ sender: Any) {
-        
+    //MARK: IBActions for Timer Buttons
+    @IBAction func startButtonPressed(_ sender: Any) {
+        runTimer()
     }
-
-    @IBAction func pauseButton(_ sender: Any) {
+    
+    
+    //MARK: Update UI Methods
+    func updateMinutesAndSeconds() {
+        if stopWatch.currentMinute < 10 {
+            minutesLabel.text = "0\(stopWatch.currentMinute)"
+        } else {
+            minutesLabel.text = "\(stopWatch.currentMinute)"
+        }
         
+        if stopWatch.currentSecond < 10 {
+            secondsLabel.text = "0\(stopWatch.currentSecond)"
+        } else {
+            secondsLabel.text = "\(stopWatch.currentSecond)"
+        }
     }
-
-    @IBAction func resetButton(_ sender: Any) {
+    
+    
+    //MARK: Helper Methods
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(TimerViewController.updateStopWatch)), userInfo: nil, repeats: true)
+    }
+    
+    func updateStopWatch() {
+        stopWatch.incrementSeconds()
+        if stopWatch.currentSecond == 60 {
+            stopWatch.incrementMinutes()
+        }
         
+        updateMinutesAndSeconds()
     }
+    
+    
 }
 
