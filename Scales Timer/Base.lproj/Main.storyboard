@@ -156,7 +156,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Timer" id="s6Q-mx-Hjp"/>
                     <connections>
-                        <outlet property="minuteLabel" destination="GF9-qi-sBm" id="2XV-rc-CPS"/>
                         <outlet property="minutesLabel" destination="GF9-qi-sBm" id="jeu-0s-Ulj"/>
                         <outlet property="secondsLabel" destination="XWO-6s-xwb" id="cBH-42-SzW"/>
                     </connections>
