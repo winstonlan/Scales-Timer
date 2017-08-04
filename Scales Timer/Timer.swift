@@ -18,6 +18,7 @@ class Timer {
     
     func incrementMinutes() {
         currentMinute += 1
+        resetSeconds()
     }
     
     func resetSeconds() {

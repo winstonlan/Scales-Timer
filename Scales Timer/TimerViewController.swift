@@ -9,6 +9,9 @@
 import UIKit
 
 class TimerViewController: UIViewController {
+    @IBOutlet weak var minutesLabel: UILabel!
+    @IBOutlet weak var secondsLabel: UILabel!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,7 @@ class TimerViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 
 }
