@@ -58,16 +58,48 @@
 		4452DFCD1F34D8AC005A683D /* Scales Timer */ = {
 			isa = PBXGroup;
 			children = (
+				4452DFE71F34E7DE005A683D /* Controller */,
+				4452DFE61F34E7D9005A683D /* View */,
+				4452DFE51F34E7D4005A683D /* Model */,
+				4452DFD81F34D8AC005A683D /* Assets.xcassets */,
+				4452DFE81F34E80B005A683D /* Supporting FIles */,
+			);
+			path = "Scales Timer";
+			sourceTree = "<group>";
+		};
+		4452DFE51F34E7D4005A683D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4452DFE61F34E7D9005A683D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4452DFD21F34D8AC005A683D /* Main.storyboard */,
+				4452DFDA1F34D8AC005A683D /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4452DFE71F34E7DE005A683D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				4452DFCE1F34D8AC005A683D /* AppDelegate.swift */,
 				4452DFD01F34D8AC005A683D /* TimerViewController.swift */,
 				4452DFE31F34D8FD005A683D /* ReportViewController.swift */,
-				4452DFD21F34D8AC005A683D /* Main.storyboard */,
-				4452DFD81F34D8AC005A683D /* Assets.xcassets */,
-				4452DFDA1F34D8AC005A683D /* LaunchScreen.storyboard */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4452DFE81F34E80B005A683D /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
 				4452DFDD1F34D8AC005A683D /* Info.plist */,
 				4452DFD51F34D8AC005A683D /* Scales_Timer.xcdatamodeld */,
 			);
-			path = "Scales Timer";
+			name = "Supporting FIles";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
