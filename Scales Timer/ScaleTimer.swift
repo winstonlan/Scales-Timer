@@ -37,6 +37,11 @@ class ScaleTimer {
         breakEarned = 0
     }
     
+    func resetMinAndSec() {
+        currentMinute = 0
+        currentSecond = 0
+    }
+    
     func decrementSeconds() {
         currentSecond -= 1
         

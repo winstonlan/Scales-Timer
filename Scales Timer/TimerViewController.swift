@@ -60,9 +60,13 @@ class TimerViewController: UIViewController {
     
     @IBAction func resetButtonPressed(_ sender: Any) {
         timer.invalidate()
-        scale.resetMinutes()
-        scale.resetSeconds()
-        updateUI()
+        scale.resetMinAndSec()
+        if onBreak == false {
+            updateWorkTimerUI()
+        }
+        else {
+            updateBreakTimerUI()
+        }
         isTimerRunning = false
         
     }
@@ -89,14 +93,20 @@ class TimerViewController: UIViewController {
     ///////////////////////////////////////////
     
     //MARK: Update UI Methods
-    func updateUI() {
-        if onBreak == false {
-            workTimeLabel.text = String(format:"%2d:%02d", scale.currentMinute, scale.currentSecond)
-        }
-        else {
-            breakTimeLabel.text = String(format:"%2d:%02d", scale.currentMinute, scale.currentSecond)
-        }
-//        workTimeLabel.text = String(format:"%2d:%02d", scale.currentMinute, scale.currentSecond)
+    func updateWorkTimerUI() {
+        workTimeLabel.text = String(format:"%2d:%02d", scale.currentMinute, scale.currentSecond)
+    }
+    
+    func updateBreakTimerUI() {
+        breakTimeLabel.text = String(format:"%2d:%02d", scale.currentMinute, scale.currentSecond)
+    }
+    
+    func resetWorkTimerUI() {
+        workTimeLabel.text = String(format:"%2d:%02d", 0, 0)
+    }
+    
+    func resetBreakTimeUI() {
+        breakTimeLabel.text = String(format:"%2d:%02d", 0, 0)
     }
     
     ///////////////////////////////////////////
@@ -115,6 +125,7 @@ class TimerViewController: UIViewController {
                 scale.incrementMinutes()
                 scale.resetSeconds()
             }
+            updateWorkTimerUI()
         }
         
         else {
@@ -123,17 +134,19 @@ class TimerViewController: UIViewController {
                 scale.decrementMinutes()
                 scale.currentSecond = 59
             }
+            updateBreakTimerUI()
         }
-        updateUI()
     }
     
     func changeToBreakMode() {
         onBreak = true
         timer.invalidate()
         isTimerRunning = false
+        // scale.resetMinAndSec
         scale.resetSeconds()
         scale.currentMinute = 5
         
+        resetWorkTimerUI()
         breakButtonBackground.backgroundColor = UIColor(red:1.00, green:0.24, blue:0.27, alpha:1.0)
         workButtonBackground.backgroundColor = UIColor(red:0.14, green:0.42, blue:0.69, alpha:1.0)
         
@@ -143,10 +156,10 @@ class TimerViewController: UIViewController {
         onBreak = false
         timer.invalidate()
         isTimerRunning = false
-        scale.resetMinutes()
-        scale.resetSeconds()
+        scale.resetMinAndSec()
         scale.breakEarned = 0
         
+        resetBreakTimeUI()
         workButtonBackground.backgroundColor = UIColor(red:0.20, green:0.60, blue:1.00, alpha:1.0)
         breakButtonBackground.backgroundColor = UIColor(red:0.70, green:0.24, blue:0.25, alpha:1.0)
         
